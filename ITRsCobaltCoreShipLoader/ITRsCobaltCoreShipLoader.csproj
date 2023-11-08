@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <LangVersion>latestmajor</LangVersion>
+        <AssemblyName>ITRsShipLoader</AssemblyName>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Reference Include="CobaltCore">
+        <HintPath>G:\SteamLibrary\steamapps\common\Cobalt Core Demo_Not\CobaltCore.dll</HintPath>
+      </Reference>
+      <Reference Include="CobaltCoreModding.Definitions">
+        <HintPath>..\..\..\..\..\source\CobaltCoreModLoader\CobaltCoreModLoader\bin\Debug\net6.0\CobaltCoreModding.Definitions.dll</HintPath>
+      </Reference>
+      <Reference Include="CobaltCoreModLoader">
+        <HintPath>G:\SteamLibrary\steamapps\common\Cobalt Core Demo\ModLoaderFiles\CobaltCoreModLoader.dll</HintPath>
+      </Reference>
+      <Reference Include="Newtonsoft.Json">
+        <HintPath>G:\SteamLibrary\steamapps\common\Cobalt Core Demo_Not\Newtonsoft.Json.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="SampleShips.zip" />
+      <EmbeddedResource Include="SampleShips.zip" />
+    </ItemGroup>
+
+    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+      <Exec Command="xcopy /Y &quot;$(TargetPath)&quot; &quot;G:\SteamLibrary\steamapps\common\Cobalt Core Demo\ModLoaderFiles\ModLibrary\ITRsShipLoader&quot;&#xA;" />
+    </Target>
+
+</Project>
