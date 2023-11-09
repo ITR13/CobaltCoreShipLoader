@@ -16,7 +16,7 @@ This shiploader allows you to use and create ships without any coding expertise.
         2. [Ship](#ship)
         3. [Artifacts](#artifacts)
         4. [Cards](#cards)
-    2. [Random sprite stufff](#random-sprite-stufff)
+    2. [Random sprite stuff](#random-sprite-stuff)
 
 ## How to install
 1. Install Ewanderer's [Cobalt Core Mod Loader](https://github.com/Ewanderer/CobaltCoreModLoader)  
@@ -138,7 +138,7 @@ These are given to the ship when you start a run.
 The card object is a list of objects with a "$type" field, corresponding to their internal class name + ", CobaltCore". You can either look at your profile to find these, or decompile CobaltCore.exe.
 These are added to your deck when you start a run.
 
-### Random sprite stufff
+### Random sprite stuff
 If you make subfolders, these will be part of the sprite name. For example, "ShipMods/Test/Test2/cat.png" will have the name "@@Test/Test2/cat".  
 You can use the sprites from other shipmods if you know their paths.  
 You can use sprites from regular mods if you know what they register them as, and append it with "@mod_part:" or "@mod_extra_part:"
