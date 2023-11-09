@@ -54,33 +54,56 @@ If you install any other ShipMods, they will appear here too!
     "ExtraLocalization": {}
   },
   "ship": {
+    "baseEnergy": 3,
+    "baseDraw": 5,
+    "evadeMax": null,
+    "hpGainFromEliteKills": 0,
+    "hpGainFromBossKills": 2,
+    "chassisOver": null,
+    "hull": 11,
+    "hullMax": 11,
+    "shieldMaxBase": 4,
+    "heatMin": 0,
+    "heatTrigger": 3,
+    "overheatDamage": 1,
+    "chassisUnder": "chassis_boxy",
     "parts": [{
         "type": "wing",
         "skin": "wing_player",
         "flip": false,
+        "damageModifier": "none",
+        "invincible": false
       }, {
         "type": "missiles",
         "skin": "missiles_artemis",
         "flip": false,
+        "damageModifier": "none",
+        "invincible": false
       }, {
         "type": "cannon",
         "skin": "cannon_artemis",
         "flip": false,
+        "damageModifier": "none",
+        "invincible": false
       }, {
         "type": "cockpit",
         "skin": "cockpit_artemis",
         "flip": false,
+        "damageModifier": "none",
+        "invincible": false
       }, {
         "type": "wing",
         "skin": "wing_player",
         "flip": true,
+        "damageModifier": "none",
+        "invincible": false
       }
     ],
   },
   "artifacts": [{
-      "$type": "ShieldPrep, CobaltCore",
+      "$type": "ShieldPrep, CobaltCore"
     }, {
-      "$type": "CargoHold, CobaltCore",
+      "$type": "CargoHold, CobaltCore"
     }
   ],
   "cards": []
