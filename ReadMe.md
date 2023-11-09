@@ -1,6 +1,23 @@
 # ITR'S COBALT CORE SHIP LOADER
 This shiploader allows you to use and create ships without any coding expertise. These mods, dubbed in the text below as "ShipMods", differs from regular Cobalt Core mods by only needing a .startership file or a zip file to function. If you're unsure if a mod is a shipmod or not- if the mod files contains a .dll file it's not a shipmod, if it contains a .startership file it **is** a shipmod!
 
+## Table of Contents
+
+1. [How to install](#how-to-install)
+2. [How to use](#how-to-use)
+3. [Creating a ShipMod](#creating-a-shipmod)
+    1. [Tutorial](#tutorial)
+        1. [Simplest ship mod](#simplest-ship-mod)
+        2. [Custom Sprites](#custom-sprites)
+    2. [Exporting](#exporting)
+4. [Other Info](#other-info)
+    1. [Fields](#fields)
+        1. [Meta](#meta)
+        2. [Ship](#ship)
+        3. [Artifacts](#artifacts)
+        4. [Cards](#cards)
+    2. [Random sprite stufff](#random-sprite-stufff)
+
 ## How to install
 1. Install Ewanderer's [Cobalt Core Mod Loader](https://github.com/Ewanderer/CobaltCoreModLoader)  
 2. Go to [Releases](https://github.com/ITR13/CobaltCoreShipLoader/releases) and expand "Assets" on the latest release.  
