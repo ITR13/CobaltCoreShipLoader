@@ -5,18 +5,17 @@ This shiploader allows you to use and create ships without any coding expertise.
 1. Install Ewanderer's [Cobalt Core Mod Loader](https://github.com/Ewanderer/CobaltCoreModLoader)  
 2. Go to [Releases](https://github.com/ITR13/CobaltCoreShipLoader/releases) and expand "Assets" on the latest release.  
 3. Download ITRsShipLoader.zip and extract it.
-4. Run the modloader and add ITRsShipLoader.dll assembly. Alternatively use the scan for mods function.    
-NB: You can see 
+4. Run the modloader and add ITRsShipLoader.dll assembly. Alternatively use the scan for mods function. 
 
 ### Installing additional ShipMods
 5. Make sure you have ran the game at least once.
 6. Go to the game's install location, you can find this by going right clicking Cobalt Core in your steam library, selecting "Manage" then "Browse local files"  
-![Image of the steps explained above](https://raw.githubusercontent.com/ITR13/CobaltCoreShipLoader/.readme/gamepath.png)
+![Image of the steps explained above](https://raw.githubusercontent.com/ITR13/CobaltCoreShipLoader/main/.readme/modpath.png)
 7. There should be a ShipMods folder there, put any ShipMods into this folder and restart the game!
 
 ## How to use
 The mod comes with a few sampleships to try out, to see them, simply start a new run and cycle to the additional ships.  
-![Begin TimeLoop screen with the ship "Crystal Escort" selected](https://raw.githubusercontent.com/ITR13/CobaltCoreShipLoader/.readme/shipselect.png)  
+![Begin TimeLoop screen with the ship "Crystal Escort" selected](https://raw.githubusercontent.com/ITR13/CobaltCoreShipLoader/main/.readme/shipselect.png)  
 If you install any other ShipMods, they will appear here too!
 
 ## Creating a ShipMod
@@ -71,7 +70,7 @@ If you install any other ShipMods, they will appear here too!
 }
 ```  
 - Restart the game and you should see the following ship:  
-![Begin TimeLoop screen with the ship "Test Ship" selected](https://raw.githubusercontent.com/ITR13/CobaltCoreShipLoader/.readme/testship.png)  
+![Begin TimeLoop screen with the ship "Test Ship" selected](https://raw.githubusercontent.com/ITR13/CobaltCoreShipLoader/main/.readme/testship.png)  
 
 ### Custom Sprites
 - Go out of the ShipMods folder, and find the "Data" folder in the game's root directory
