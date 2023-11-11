@@ -19,10 +19,13 @@ This shiploader allows you to use and create ships without any coding expertise.
     2. [Random sprite stuff](#random-sprite-stuff)
 
 ## How to install
-1. Install Ewanderer's [Cobalt Core Mod Loader](https://github.com/Ewanderer/CobaltCoreModLoader)  
-2. Go to [Releases](https://github.com/ITR13/CobaltCoreShipLoader/releases) and expand "Assets" on the latest release.  
-3. Download ITRsShipLoader.zip and extract it.
-4. Run the modloader and add ITRsShipLoader.dll assembly. Alternatively use the scan for mods function. 
+1. Install Ewanderer's [Cobalt Core Mod Loader](https://github.com/Ewanderer/CobaltCoreModLoader) or [Cobalt Core Mod Loader Classic](https://drive.google.com/file/d/1rzxZl1HMjhRdO_7tDmrI6ZbIY4a3oa-j/view)
+2. Go to [Releases](https://github.com/ITR13/CobaltCoreShipLoader/releases/) and expand "Assets" on the latest release.  
+3. Download ITRsShipLoader.zip and extract it, DO NOT download "source code".
+4. Next step depends on if you're using Modloader Classic (opens a command prompt) or Modloader App (opens a window) 
+    1. If you're using Modloader Classic, put the folder that's inside the zip file into your "Mod Library" folder
+    2. If you're using the Modloader App, then run the app and add the dll through it's interface
+5. Now just run the game through the modloader and it should be working!
 
 ### Installing additional ShipMods
 5. Make sure you have ran the game at least once.
