@@ -9,8 +9,11 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Reference Include="0Harmony">
+        <HintPath>..\..\..\..\Downloads\temp\CobaltCoreModLauncher\0Harmony.dll</HintPath>
+      </Reference>
       <Reference Include="CobaltCore">
-        <HintPath>G:\SteamLibrary\steamapps\common\Cobalt Core Demo_Not\CobaltCore.dll</HintPath>
+        <HintPath>G:\SteamLibrary\steamapps\common\Cobalt Core\CobaltCore.dll</HintPath>
       </Reference>
       <Reference Include="CobaltCoreModding.Definitions">
         <HintPath>..\..\..\..\..\source\CobaltCoreModLoader\CobaltCoreModLoader\bin\Debug\net6.0\CobaltCoreModding.Definitions.dll</HintPath>
@@ -29,7 +32,7 @@
     </ItemGroup>
 
     <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-      <Exec Command="xcopy /Y &quot;$(TargetPath)&quot; &quot;G:\SteamLibrary\steamapps\common\Cobalt Core Demo\ModLoaderFiles\ModLibrary\ITRsShipLoader&quot;&#xA;" />
+      <Exec Command="xcopy /Y &quot;$(TargetPath)&quot; &quot;G:\SteamLibrary\steamapps\common\Cobalt Core\ModLibrary\ITRsShipLoader&quot;&#xA;" />
     </Target>
 
 </Project>
