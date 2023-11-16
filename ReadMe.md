@@ -1,5 +1,5 @@
 # ITR'S COBALT CORE SHIP LOADER
-This shiploader allows you to use and create ships without any coding expertise. These mods, dubbed in the text below as "ShipMods", differs from regular Cobalt Core mods by only needing a .startership file or a zip file to function. If you're unsure if a mod is a shipmod or not- if the mod files contains a .dll file it's not a shipmod, if it contains a .startership file it **is** a shipmod!
+This shiploader allows you to use and create ships without any coding expertise. These mods, dubbed in the text below as "ShipMods", differs from regular Cobalt Core mods by only needing a .startership file or a zip file to function. If you're unsure if a mod is a shipmod or not- if the mod files contain a .dll file it's not a shipmod, if it contains a .startership file it **is** a shipmod!
 
 ## Table of Contents
 
@@ -17,6 +17,13 @@ This shiploader allows you to use and create ships without any coding expertise.
         3. [Artifacts](#artifacts)
         4. [Cards](#cards)
     2. [Random sprite stuff](#random-sprite-stuff)
+    3. [Ships that came with the game](#ships-that-came-with-the-game)
+        - [Artemis](#artemis)
+        - [Ares](#ares)
+        - [Jupiter](#jupiter)
+        - [Gemini](#gemini)
+        - [Boat / Tiderunner](#boat--tiderunner)
+
 
 ## How to install
 1. Install Ewanderer's [Cobalt Core Mod Loader](https://github.com/Ewanderer/CobaltCoreModLoader) or [Cobalt Core Mod Loader Classic](https://drive.google.com/file/d/1rzxZl1HMjhRdO_7tDmrI6ZbIY4a3oa-j/view)
@@ -109,7 +116,16 @@ If you install any other ShipMods, they will appear here too!
       "$type": "CargoHold, CobaltCore"
     }
   ],
-  "cards": []
+  "cards": [{
+      "$type": "CannonColorless, CobaltCore"
+    }, {
+      "$type": "CannonColorless, CobaltCore"
+    }, {
+      "$type": "DodgeColorless, CobaltCore"
+    }, {
+      "$type": "BasicShieldColorless, CobaltCore"
+    }
+  ]
 }
 ```  
 - Restart the game and you should see the following ship:  
@@ -162,10 +178,315 @@ These are given to the ship when you start a run.
 
 #### Cards
 The card object is a list of objects with a "$type" field, corresponding to their internal class name + ", CobaltCore". You can either look at your profile to find these, or decompile CobaltCore.exe.
-These are added to your deck when you start a run.
+These are added to your deck when you start a run.  
+Keep in mind that the colorless "default cards" you start with are defined here.
 
-### Random sprite stuff
+### Sprite stuff
 If you make subfolders, these will be part of the sprite name. For example, "ShipMods/Test/Test2/cat.png" will have the name "@@Test/Test2/cat".  
 You can use the sprites from other shipmods if you know their paths.  
 You can use sprites from regular mods if you know what they register them as, and append it with "@mod_part:" or "@mod_extra_part:"
+
+### Ships that came with the game
+To see how your current ship+artifact+deck looks, you can check out your save file. 
+Alternatively you can use my [Profile Editor](https://github.com/ITR13/CobaltCoreEditor) to export a .diffship file that can be renamed to .startership if you remove the cards from your character decks.  
+You can also check them by scrolling down
+
+#### Artemis
+```json
+  "__meta": {
+    "Name": "Artemis",
+    "Author": "Cobalt Core",
+  },
+  "ship": {
+    "hull": 12,
+    "hullMax": 12,
+    "shieldMaxBase": 4,
+    "chassisUnder": "chassis_boxy",
+    "parts": [{
+        "type": "wing",
+        "skin": "wing_player",
+        "flip": false,
+        "damageModifier": "none",
+        "invincible": false
+      }, {
+        "type": "missiles",
+        "skin": "missiles_artemis",
+        "flip": false,
+        "damageModifier": "none",
+        "invincible": false
+      }, {
+        "type": "cannon",
+        "skin": "cannon_artemis",
+        "flip": false,
+        "damageModifier": "none",
+        "invincible": false
+      }, {
+        "type": "cockpit",
+        "skin": "cockpit_artemis",
+        "flip": false,
+        "damageModifier": "none",
+        "invincible": false
+      }, {
+        "type": "wing",
+        "skin": "wing_player",
+        "flip": true,
+        "damageModifier": "none",
+        "invincible": false
+      }
+    ],
+  },
+  "artifacts": [{
+      "$type": "ShieldPrep, CobaltCore"
+    }, {
+      "$type": "CargoHold, CobaltCore"
+    }
+  ],
+  "cards": [{
+      "$type": "CannonColorless, CobaltCore"
+    }, {
+      "$type": "CannonColorless, CobaltCore"
+    }, {
+      "$type": "DodgeColorless, CobaltCore"
+    }, {
+      "$type": "BasicShieldColorless, CobaltCore"
+    }
+  ]
+}
+```
+#### Ares
+```json
+  "__meta": {
+    "Name": "Ares",
+    "Author": "Cobalt Core",
+  },
+  "ship": {
+    "hull": 9,
+    "hullMax": 9,
+    "shieldMaxBase": 5,
+    "chassisUnder": "chassis_lawless",
+    "parts": [{
+        "type": "wing",
+        "skin": "wing_player",
+        "active": false,
+        "damageModifier" = "armor",
+        "damageModifierOverrideWhileActive": "none"
+      }, {
+        "type": "cockpit",
+        "skin": "cockpit_lawless"
+      }, {
+        "type": "missiles",
+        "skin": "missiles_lawless"
+      }, {
+        "type": "wing",
+        "skin": "wing_ares",
+        "active": true,
+        "damageModifier" = "armor",
+        "damageModifierOverrideWhileActive": "none"
+      }
+    ],
+  },
+  "artifacts": [{
+      "$type": "ShieldPrep, CobaltCore"
+    }, {
+      "$type": "AresCannon, CobaltCore"
+    }, {
+      "$type": "ControlRods, CobaltCore"
+    }
+  ],
+  "cards": [{
+      "$type": "CannonColorless, CobaltCore"
+    }, {
+      "$type": "CannonColorless, CobaltCore"
+    }, {
+      "$type": "DodgeColorless, CobaltCore"
+    }, {
+      "$type": "BasicShieldColorless, CobaltCore"
+    }
+  ]
+}
+```
+#### Jupiter
+```json
+  "__meta": {
+    "Name": "Jupiter",
+    "Author": "Cobalt Core",
+  },
+  "ship": {
+    "hull": 10,
+    "hullMax": 10,
+    "shieldMaxBase": 3,
+    "chassisUnder": "chassis_jupiter",
+    "parts": [{
+        "type": "wing",
+        "skin": "wing_jupiter_c"
+      }, {
+        "type": "empty",
+        "skin": "scaffolding_jupiter"
+      }, {
+        "type": "comms",
+        "skin": "wing_jupiter_b",
+        "damageModifier": "weak"
+      }, {
+        "type": "missiles",
+        "skin": "missiles_jupiter",
+        "damageModifier": "weak"
+      }, {
+        "type": "cockpit",
+        "skin": "cockpit_jupiter"
+      }, {
+        "type": "wing",
+        "skin": "wing_jupiter_d",
+        "flip": true
+      }
+    ],
+  },
+  "artifacts": [{
+      "$type": "ShieldPrep, CobaltCore"
+    }, {
+      "$type": "JupiterDroneHub, CobaltCore"
+    }
+  ],
+  "cards": [{
+      "$type": "CannonColorless, CobaltCore"
+    }, {
+      "$type": "CannonColorless, CobaltCore"
+    }, {
+      "$type": "DodgeColorless, CobaltCore"
+    }, {
+      "$type": "BasicShieldColorless, CobaltCore"
+    }
+  ]
+}
+```
+#### Gemini
+```json
+  "__meta": {
+    "Name": "Gemini",
+    "Author": "Cobalt Core",
+  },
+  "ship": {
+    "baseEnergy": 3,
+    "hull": 11,
+    "hullMax": 11,
+    "shieldMaxBase": 4,
+    "chassisUnder": "chassis_gemini",
+    "parts": [{
+        "type": "missiles",
+        "skin": "missiles_gemini",
+        "active": true
+      }, {
+        "type": "cannon",
+        "skin": "cannon_gemini",
+        "active": true
+      }, {
+        "type": "cocpit",
+        "skin": "cockpit_gemini",
+      }, {
+        "type": "cannon",
+        "skin": "cannon_geminiB",
+        "active": false,
+        "flip": true
+      }, {
+        "type": "missiles",
+        "skin": "missiles_geminiB",
+        "active": false,
+        "flip": true
+      }
+    ],
+  },
+  "artifacts": [{
+      "$type": "ShieldPrep, CobaltCore"
+    }, {
+      "$type": "GeminiCore, CobaltCore"
+    }
+  ],
+  "cards": [{
+      "$type": "CannonColorless, CobaltCore"
+    }, {
+      "$type": "CannonColorless, CobaltCore"
+    }, {
+      "$type": "DodgeColorless, CobaltCore"
+    }, {
+      "$type": "BasicShieldColorless, CobaltCore"
+    }
+  ]
+}
+```
+#### Boat / Tiderunner
+```json
+"__meta": {
+    "Name": "Tiderunner",
+    "Author": "Cobalt Core",
+  },
+  "ship": {
+    "baseEnergy": 3,
+    "hull": 7,
+    "hullMax": 7,
+    "shieldMaxBase": 3,
+    "chassisUnder": "chassis_tiderunner",
+    "parts": [{
+        "type": "cockpit",
+        "skin": "cockpit_tiderunner"
+      }, {
+        "type": "missiles",
+        "skin": "missiles_boat",
+        "active": true
+      }, {
+        "type": "empty",
+        "skin": "scaffolding_boat"
+      }, {
+        "type": "empty",
+        "skin": "scaffolding_boat"
+      }, {
+        "type": "cannon",
+        "skin": "cannon_boat",
+        "active": true
+      }, {
+        "type": "wing",
+        "skin": "wing_tiderunner",
+        "flip": true
+      }
+    ],
+  },
+  "artifacts": [{
+      "$type": "ShieldPrep, CobaltCore"
+    }, {
+      "$type": "TideRunner, CobaltCore"
+    }
+  ],
+  "cards": [{
+      "$type": "CannonColorless, CobaltCore"
+    }, {
+      "$type": "CannonColorless, CobaltCore"
+    }, {
+      "$type": "DodgeColorless, CobaltCore"
+    }, {
+      "$type": "BasicShieldColorless, CobaltCore"
+    }
+  ]
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
