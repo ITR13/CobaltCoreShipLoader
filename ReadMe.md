@@ -193,6 +193,7 @@ You can also check them by scrolling down
 
 #### Artemis
 ```json
+{
   "__meta": {
     "Name": "Artemis",
     "Author": "Cobalt Core",
@@ -255,6 +256,7 @@ You can also check them by scrolling down
 ```
 #### Ares
 ```json
+{
   "__meta": {
     "Name": "Ares",
     "Author": "Cobalt Core",
@@ -307,6 +309,7 @@ You can also check them by scrolling down
 ```
 #### Jupiter
 ```json
+{
   "__meta": {
     "Name": "Jupiter",
     "Author": "Cobalt Core",
@@ -360,6 +363,7 @@ You can also check them by scrolling down
 ```
 #### Gemini
 ```json
+{
   "__meta": {
     "Name": "Gemini",
     "Author": "Cobalt Core",
@@ -414,7 +418,8 @@ You can also check them by scrolling down
 ```
 #### Boat / Tiderunner
 ```json
-"__meta": {
+{
+  "__meta": {
     "Name": "Tiderunner",
     "Author": "Cobalt Core",
   },
