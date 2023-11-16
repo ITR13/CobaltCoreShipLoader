@@ -270,7 +270,7 @@ You can also check them by scrolling down
         "type": "wing",
         "skin": "wing_player",
         "active": false,
-        "damageModifier" = "armor",
+        "damageModifier": "armor",
         "damageModifierOverrideWhileActive": "none"
       }, {
         "type": "cockpit",
@@ -282,7 +282,7 @@ You can also check them by scrolling down
         "type": "wing",
         "skin": "wing_ares",
         "active": true,
-        "damageModifier" = "armor",
+        "damageModifier": "armor",
         "damageModifierOverrideWhileActive": "none"
       }
     ],
