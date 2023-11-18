@@ -26,6 +26,8 @@ This shiploader allows you to use and create ships without any coding expertise.
 
 
 ## How to install
+If you want a better guide that has images, [click here](https://github.com/ITR13/CobaltCoreShipLoader/blob/main/how_to_install_modloader.md)
+
 1. Install Ewanderer's [Cobalt Core Mod Loader](https://github.com/Ewanderer/CobaltCoreModLoader) or [Cobalt Core Mod Loader Classic](https://drive.google.com/file/d/1rzxZl1HMjhRdO_7tDmrI6ZbIY4a3oa-j/view)
 2. Go to [Releases](https://github.com/ITR13/CobaltCoreShipLoader/releases/) and expand "Assets" on the latest release.  
 3. Download ITRsShipLoader.zip and extract it, DO NOT download "source code".
