@@ -39,3 +39,5 @@ _UpgradeReport_Files/
 Thumbs.db
 Desktop.ini
 .DS_Store
+/ITRsCobaltCoreShipLoader/CobaltCore.dll
+/ITRsCobaltCoreShipLoader/CobaltCoreModding.Definitions.dll
