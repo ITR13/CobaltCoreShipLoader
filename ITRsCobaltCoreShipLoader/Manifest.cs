@@ -1,9 +1,11 @@
 ﻿using System.IO.Compression;
 using System.Reflection;
+using CobaltCoreModding.Definitions;
 using CobaltCoreModding.Definitions.ExternalItems;
 using CobaltCoreModding.Definitions.ModContactPoints;
 using CobaltCoreModding.Definitions.ModManifests;
 using ITRsCobaltCoreShipLoader.Data;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
 namespace ITRsCobaltCoreShipLoader;
@@ -206,7 +208,7 @@ public class Manifest : IRawShipManifest, IRawStartershipManifest, ISpriteManife
         Console.WriteLine($"Successfully loaded {_loadedShips.Count} ships");
     }
 
-    public void LoadManifest(IArtRegistry artRegistry)
+    public void LoadManifest(ISpriteRegistry artRegistry)
     {
         var shipModFolder = GetShipModFolder();
         var files = Directory.GetFiles(shipModFolder, "*.png", SearchOption.AllDirectories);
@@ -336,5 +338,8 @@ public class Manifest : IRawShipManifest, IRawStartershipManifest, ISpriteManife
         Console.WriteLine($"Registered {registered.Count} ship part sprites:\n" + string.Join("\n", registered));
     }
 
-    public IEnumerable<string> Dependencies => ArraySegment<string>.Empty;
+
+    IEnumerable<DependencyEntry> IManifest.Dependencies =>Array.Empty<DependencyEntry>();
+
+    public ILogger? Logger { get; set; }
 }
