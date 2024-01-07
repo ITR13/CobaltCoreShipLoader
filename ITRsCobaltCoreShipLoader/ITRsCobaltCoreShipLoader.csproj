@@ -23,17 +23,29 @@
       <Reference Include="Newtonsoft.Json">
         <HintPath>G:\SteamLibrary\steamapps\common\Cobalt Core Demo_Not\Newtonsoft.Json.dll</HintPath>
       </Reference>
+      <Reference Include="Nickel">
+        <HintPath>..\..\Nickel\Nickel\.bin\Debug\net6.0\Nickel.dll</HintPath>
+      </Reference>
+      <Reference Include="OneOf">
+        <HintPath>..\..\Nickel\Nickel\.bin\Debug\net6.0\OneOf.dll</HintPath>
+      </Reference>
+      <Reference Include="PluginManager">
+        <HintPath>..\..\Nickel\Nickel\.bin\Debug\net6.0\PluginManager.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
     <ItemGroup>
       <None Remove="SampleShips.zip" />
       <EmbeddedResource Include="SampleShips.zip" />
     </ItemGroup>
-
+    
     <ItemGroup>
       <PackageReference Include="Lib.Harmony" Version="2.2.2" />
       <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     </ItemGroup>
 
+    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+      <Exec Command="xcopy /Y &quot;$(TargetPath)&quot; &quot;D:\User\Documents\RiderProjects\Nickel\Nickel\.bin\Debug\net6.0\ModLibrary\ITRsShipLoader&quot;&#xA;" />
+    </Target>
 </Project>
