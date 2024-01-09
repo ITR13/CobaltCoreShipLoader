@@ -1,3 +1,10 @@
+# Table of Contents
+1. [Installing modloader](#installing-modloader)
+2. [Transferring your save file from the vanilla game](#transferring-your-save-file-from-the-vanilla-game)
+3. [Downloading and Installing Mods](#downloading-and-installing-mods)
+    1. [About mods on Github](#about-mods-on-github)
+    2. [About errors](#about-errors)
+
 # Installing modloader
 Download [Nickel.zip](https://github.com/Shockah/Nickel/releases/download/release%2F0.1.0/Nickel-0.1.0.zip) and extract it somewhere, *preferably* your game's directory.  
 Inside the downloaded zip, you'll find the Nickel folder. Extract this folder, preferably within your game's directory.  
