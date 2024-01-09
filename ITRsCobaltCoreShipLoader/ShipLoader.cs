@@ -218,9 +218,9 @@ public class ShipLoader(
         }
 
         original = original[2..].ToLower();
-        for (var i = 0; i < folders.Length - 1; i++)
+        for (var i = 0; i < folders.Length; i++)
         {
-            var path = string.Join("/", folders[i..^1]) + "/" + original;
+            var path = string.Join("/", folders[..^i]) + "/" + original;
             if (_registeredParts.Contains(path))
             {
                 return path;
