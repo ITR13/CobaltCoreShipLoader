@@ -10,14 +10,14 @@ Download [Nickel.zip](https://github.com/Shockah/Nickel/releases/download/releas
 Inside the downloaded zip, you'll find the Nickel folder. Extract this folder, preferably within your game's directory.  
 ![The game's folder open with a folder named "Nickel" highlighted](https://raw.githubusercontent.com/ITR13/CobaltCoreShipLoader/main/.readme/nickel_zip.png)  
 Make sure it's *extracted* and a **folder** like in the previous image. That it doesn't end with ".zip"  
-Open the Nickel folder and run "Nickel.exe".  
-![Folder is sorted with type ascending, run Nickel.exe](https://raw.githubusercontent.com/ITR13/CobaltCoreShipLoader/main/.readme/nickel_exe.png)  
+Open the Nickel folder and run "NickelLauncher.exe".  
+![Folder is sorted with type ascending, NickelLauncher.exe is highlighted](https://raw.githubusercontent.com/ITR13/CobaltCoreShipLoader/main/.readme/nickel_exe.png)  
 If the game loads without any errors the modloader is working.  
 
 ## Transferring your save file from the vanilla game
 If you're on windows press windows+r and type in "%AppData%/CobaltCore" and hit run. This will open your vanilla save folder. For other platforms, please tell me so I can update the guide.  
 ![Folder with Slot0, Slot1, Settings.json, and steam_autocloud.vdf in it](https://raw.githubusercontent.com/ITR13/CobaltCoreShipLoader/main/.readme/save_folder.png)  
-Open your Nickel folder from before, and find the "ModSaves" folder. If you haven't run Nickel.exe yet then you need to create this folder yourself.  
+Open your Nickel folder from before, and find the "ModSaves" folder. If you haven't run NickelLauncher.exe yet then you need to create this folder yourself.  
 ![Folder with ModSaves marked](https://raw.githubusercontent.com/ITR13/CobaltCoreShipLoader/main/.readme/nickel_saves.png)  
 Copy all the files in here except steam_autocloud.vdf into this folder. Make sure to replace any files already in this folder.  
 
@@ -27,7 +27,7 @@ Open your Nickel folder and find the "ModLibrary" folder.
 ![Folder with ModSaves marked](https://raw.githubusercontent.com/ITR13/CobaltCoreShipLoader/main/.readme/nickel_saves.png)  
 Place the entire downloaded zip files inside the "ModLibrary" folder within the Nickel directory. No need to extract the contents.  
 ![Folder with Essentials, Nickel.Legacy, ITRsShipLoader.zip, and SampleShips.zip in it](https://raw.githubusercontent.com/ITR13/CobaltCoreShipLoader/main/.readme/nickel_mods.png)  
-If you did it correctly it will look something like the previous image. Now you just have to run Nickel.exe, and everything should be working!  
+If you did it correctly it will look something like the previous image. Now you just have to run NickelLauncher.exe, and everything should be working!  
 
 ### About mods on Github
 A lot of mods are currently hosted on GitHub. Make sure to not press the big DOWNLOAD button on the github repository. Instead navigate over to Releases.  

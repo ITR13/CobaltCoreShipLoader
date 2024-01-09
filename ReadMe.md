@@ -32,7 +32,7 @@ If you want a better guide that has images, [click here](https://github.com/ITR1
 
 1. Go to [Nickel's Releases](https://github.com/Shockah/Nickel/releases/) and expand "Assets" on the latest release. 
 2. Download "Nickel-\[version\].zip" and extract the Nickel folder somewhere, I usually prefer having it in the game's folder.
-3. Run the game once to make sure it's set up (for info on how to transfer your saves, check the better guide)
+3. Run NickelLauncher.exe once to make sure it's set up correctly (for info on how to transfer your saves, check the better guide)
 3. Download [ITRsShiploader.zip](https://github.com/ITR13/CobaltCoreShipLoader/releases/download/2.0.0/ITRsShipLoader.zip) into your ModLibrary folder (inside the Nickel folder from earlier)
 4. Download any shipmods you want and put them in the same folder. If you need a shipmod to test with, download [SampleShips.zip](https://raw.githubusercontent.com/ITR13/CobaltCoreShipLoader/main/SampleShips.zip)
 5. Now just run the game through the modloader and it should be working!
