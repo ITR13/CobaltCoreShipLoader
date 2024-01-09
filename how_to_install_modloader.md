@@ -1,3 +1,6 @@
+**NB: THIS IS THE OLD MODLOADER**
+For the install instructions of the new modloader, [click here](https://github.com/ITR13/CobaltCoreShipLoader/blob/main/how_to_install_nickel.md)
+
 # Installing modloader
 Download the top zip file of the latest release at: [https://github.com/Ewanderer/CobaltCoreModLoader/releases](https://github.com/Ewanderer/CobaltCoreModLoader/releases)  
 ![Website above with Assets expanded on a release and "CobaltCoreModLauncher.zip" highlighted](https://raw.githubusercontent.com/ITR13/CobaltCoreShipLoader/main/.readme/modloader_git.png)

@@ -1,7 +1,5 @@
 # ITR'S COBALT CORE SHIP LOADER
-This shiploader allows you to use and create ships without any coding expertise. These mods, dubbed in the text below as "ShipMods", differs from regular Cobalt Core mods by only needing an easily editable text file to function.
-
-**NB: This is the guide for the new modloader, if you're still using EWanderer's modloader, [click here](https://github.com/ITR13/CobaltCoreShipLoader/blob/main/OldReadMe.md)**
+This shiploader allows you to use and create ships without any coding expertise. These mods, dubbed in the text below as "ShipMods", differs from regular Cobalt Core mods by only needing a .startership file or a zip file to function. If you're unsure if a mod is a shipmod or not- if the mod files contain a .dll file it's not a shipmod, if it contains a .startership file it **is** a shipmod!
 
 ## Table of Contents
 
@@ -28,25 +26,33 @@ This shiploader allows you to use and create ships without any coding expertise.
 
 
 ## How to install
-If you want a better guide that has images, [click here](https://github.com/ITR13/CobaltCoreShipLoader/blob/main/how_to_install_nickel.md)
+If you want a better guide that has images, [click here](https://github.com/ITR13/CobaltCoreShipLoader/blob/main/how_to_install_modloader.md)
 
-1. Go to [Nickel's Releases](https://github.com/Shockah/Nickel/releases/) and expand "Assets" on the latest release. 
-2. Download "Nickel-\[version\].zip" and extract the Nickel folder somewhere, I usually prefer having it in the game's folder.
-3. Run the game once to make sure it's set up (for info on how to transfer your saves, check the better guide)
-3. Download [ITRsShiploader.zip](https://github.com/ITR13/CobaltCoreShipLoader/releases/download/2.0.0/ITRsShipLoader.zip) into your ModLibrary folder (inside the Nickel folder from earlier)
-4. Download any shipmods you want and put them in the same folder. If you need a shipmod to test with, download [SampleShips.zip](https://github.com/ITR13/CobaltCoreShipLoader/releases/download/2.0.0/SampleShips.zip)
+1. Install Ewanderer's [Cobalt Core Mod Loader](https://github.com/Ewanderer/CobaltCoreModLoader) or [Cobalt Core Mod Loader Classic](https://drive.google.com/file/d/1rzxZl1HMjhRdO_7tDmrI6ZbIY4a3oa-j/view)
+2. Go to [Releases](https://github.com/ITR13/CobaltCoreShipLoader/releases/) and expand "Assets" on the latest release.  
+3. Download ITRsShipLoader.zip and extract it, DO NOT download "source code".
+4. Next step depends on if you're using Modloader Classic (opens a command prompt) or Modloader App (opens a window) 
+    1. If you're using Modloader Classic, put the folder that's inside the zip file into your "Mod Library" folder
+    2. If you're using the Modloader App, then run the app and add the dll through it's interface
 5. Now just run the game through the modloader and it should be working!
 
+### Installing additional ShipMods
+5. Make sure you have ran the game at least once.
+6. Go to the game's install location, you can find this by going right clicking Cobalt Core in your steam library, selecting "Manage" then "Browse local files"  
+![Image of the steps explained above](https://raw.githubusercontent.com/ITR13/CobaltCoreShipLoader/main/.readme/modpath.png)
+7. There should be a ShipMods folder there, put any ShipMods into this folder and restart the game!
+
 ## How to use
-If you run the game with shipmods installed, they'll be added to the ship list on the new loop screen:
+The mod comes with a few sampleships to try out, to see them, simply start a new run and cycle to the additional ships.  
 ![Begin TimeLoop screen with the ship "Crystal Escort" selected](https://raw.githubusercontent.com/ITR13/CobaltCoreShipLoader/main/.readme/shipselect.png)  
+If you install any other ShipMods, they will appear here too!
 
 ## Creating a ShipMod
 
 ## Tutorial
 ### Simplest ship mod
 
-- Create a folder named "Test" in your ModLibrary folder
+- Create a folder named "Test" in your ShipMods folder
 - Create a file named "test.startership" in it
   - NB: make sure it has the "startership" filetype, not .txt
 - Open it in a text editor and paste the following:
@@ -124,35 +130,20 @@ If you run the game with shipmods installed, they'll be added to the ship list o
   ]
 }
 ```  
-- Make another file named "nickel.json" and paste the following in:
-```json
-{
-    "UniqueName": "YourNameHere.Test",
-    "Version": "1.0.0",
-    "RequiredApiVersion": "0.1.0",
-    "ModType": "ShipMod",
-    "Dependencies": [
-        {
-            "UniqueName": "ITR.ShipLoader",
-            "Version": "1.0.0"
-        }
-    ]
-}
-```
 - Restart the game and you should see the following ship:  
 ![Begin TimeLoop screen with the ship "Test Ship" selected](https://raw.githubusercontent.com/ITR13/CobaltCoreShipLoader/main/.readme/testship.png)  
 
 ### Custom Sprites
-- Go out of the ModLibrary folder, and find the "Data" folder in the game's root directory
+- Go out of the ShipMods folder, and find the "Data" folder in the game's root directory
 - Enter Data/sprites/parts and find a cool looking part
-- Copy the part into your "ModLibrary/Test" folder, and edit the image a little. Rename the file to "custom.png"
-- Inside parts, change one of the "skin" fields to "@@Test/custom"
+- Copy the part into your "ShipMods/Test" folder, and edit the image a little. Rename the file to "custom.png"
+- Inside parts, change one of hte "skin" fields to "@@Test/custom"
   - NB: "Test" should correspond to your foldername, if you rename the test folder, rename it here too
 - Start the game, and you should now see your sprite in game  
 
 ### Exporting
 To export your mod, simply zip the folder you made and send it to your friend!
-Your friend can put the entire zip file into their ModLibrary folder and it will still work!
+Your friend can put the entire zip file into their ShipMods folder and it will still work!
 
 ## Other Info
 ### Fields
@@ -193,17 +184,14 @@ These are added to your deck when you start a run.
 Keep in mind that the colorless "default cards" you start with are defined here.
 
 ### Sprite stuff
-If you make subfolders, these will be part of the sprite name. For example, "ShipMods/Test/Yay/Test2/cat.png" will have the name "@@Test/Yay/Test2/cat".  
-Folders that *share* folders don't need to put in the parts that match, for example "Test/Yay/Test3/cat.startership" can use "@@Test2/cat" instead of the full path.
+If you make subfolders, these will be part of the sprite name. For example, "ShipMods/Test/Test2/cat.png" will have the name "@@Test/Test2/cat".  
 You can use the sprites from other shipmods if you know their paths.  
 You can use sprites from regular mods if you know what they register them as, and append it with "@mod_part:" or "@mod_extra_part:"
 
-
 ### Ships that came with the game
-If you scroll down you get a list of the starting ships.
-To see how your current ship+artifact+deck looks, you can check out your save file, it's almost the same format.
+To see how your current ship+artifact+deck looks, you can check out your save file. 
 Alternatively you can use my [Profile Editor](https://github.com/ITR13/CobaltCoreEditor) to export a .diffship file that can be renamed to .startership if you remove the cards from your character decks.  
-Btw, files with modded ships also work! Just make sure to add the mods as dependencies in nickel.json
+You can also check them by scrolling down
 
 #### Artemis
 ```json
