@@ -25,7 +25,8 @@ Copy all the files in here except steam_autocloud.vdf into this folder. Make sur
 Find the mod you want to install, and find their zip file. As an example we'll be using [ITRsShiploader.zip](https://github.com/ITR13/CobaltCoreShipLoader/releases/download/2.0.0/ITRsShipLoader.zip) and [SampleShips.zip](https://raw.githubusercontent.com/ITR13/CobaltCoreShipLoader/main/SampleShips.zip)
 Open your Nickel folder and find the "ModLibrary" folder.
 ![Folder with ModSaves marked](https://raw.githubusercontent.com/ITR13/CobaltCoreShipLoader/main/.readme/nickel_saves.png)  
-Place the entire downloaded zip files inside the "ModLibrary" folder within the Nickel directory. No need to extract the contents.  
+Download the zip file from before and open it, there should be a folder inside. Put this folder in your ModLibrary folder.  
+If it's a Nickel mod or a ShipMod then it's fine to put the entire zip inside your ModLibrary folder instead, but for Legacy mods it doesn't!  
 ![Folder with Essentials, Nickel.Legacy, ITRsShipLoader.zip, and SampleShips.zip in it](https://raw.githubusercontent.com/ITR13/CobaltCoreShipLoader/main/.readme/nickel_mods.png)  
 If you did it correctly it will look something like the previous image. Now you just have to run NickelLauncher.exe, and everything should be working!  
 
