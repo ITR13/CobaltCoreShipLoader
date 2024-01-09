@@ -77,6 +77,17 @@ public class ShipLoader(
                 var definition = new ShipConfiguration
                 {
                     Ship = ship,
+                    Name = locale =>
+                        ship.MetaData.ExtraLocalization.TryGetValue(locale, out var localization)
+                            ? localization.Name
+                            : ship.MetaData.Name,
+                    Description = locale =>
+                        (string.IsNullOrEmpty(ship.MetaData.Author) ? "" : $"Author: {ship.MetaData.Author}\n") +
+                        (
+                            ship.MetaData.ExtraLocalization.TryGetValue(locale, out var localization)
+                                ? localization.Description
+                                : ship.MetaData.Description
+                        ),
                 };
                 var registeredShip = modShips.RegisterShip(ship.ship.key, definition);
 
