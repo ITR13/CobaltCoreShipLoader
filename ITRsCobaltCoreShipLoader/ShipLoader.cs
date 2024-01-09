@@ -150,7 +150,7 @@ public class ShipLoader(
         var pngEntries = new List<(string, IFileInfo)>();
         var offPngEntries = new Dictionary<string, IFileInfo>();
         var shipModEntries = new List<SplitEntry>();
-        foreach (var fileInfo in package.PackageRoot.Files)
+        foreach (var fileInfo in package.PackageRoot.GetFilesRecursively())
         {
             var entryPath = package.PackageRoot.GetRelativePathTo(fileInfo).ToLower();
             if (entryPath == "nickel.json") continue;
