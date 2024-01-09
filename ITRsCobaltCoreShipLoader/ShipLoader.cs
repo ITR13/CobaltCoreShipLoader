@@ -152,7 +152,7 @@ public class ShipLoader(
         var shipModEntries = new List<SplitEntry>();
         foreach (var fileInfo in package.PackageRoot.Files)
         {
-            var entryPath = fileInfo.GetRelativePathTo(package.PackageRoot);
+            var entryPath = fileInfo.GetRelativePathTo(package.PackageRoot).ToLower();
             if (entryPath == "nickel.json") continue;
 
             var cleanedEntry = FixPath(entryPath.ToLower());
