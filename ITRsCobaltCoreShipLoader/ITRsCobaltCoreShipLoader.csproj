@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <LangVersion>latestmajor</LangVersion>
@@ -9,43 +9,19 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Reference Include="0Harmony">
-        <HintPath>..\..\..\..\Downloads\temp\CobaltCoreModLauncher\0Harmony.dll</HintPath>
-      </Reference>
-      <Reference Include="CobaltCore">
-        <HintPath>G:\SteamLibrary\steamapps\common\Cobalt Core\CobaltCore.dll</HintPath>
-        <Private>False</Private>
-      </Reference>
-      <Reference Include="CobaltCoreModding.Definitions">
-        <HintPath>..\..\..\..\..\source\CobaltCoreModLoader\CobaltCoreModLoader\bin\Debug\net6.0\CobaltCoreModding.Definitions.dll</HintPath>
-        <Private>False</Private>
-      </Reference>
-      <Reference Include="Newtonsoft.Json">
-        <HintPath>G:\SteamLibrary\steamapps\common\Cobalt Core Demo_Not\Newtonsoft.Json.dll</HintPath>
-      </Reference>
-      <Reference Include="Nickel">
-        <HintPath>..\..\Nickel\Nickel\.bin\Debug\net6.0\Nickel.dll</HintPath>
-      </Reference>
-      <Reference Include="OneOf">
-        <HintPath>..\..\Nickel\Nickel\.bin\Debug\net6.0\OneOf.dll</HintPath>
-      </Reference>
-      <Reference Include="PluginManager">
-        <HintPath>..\..\Nickel\Nickel\.bin\Debug\net6.0\PluginManager.dll</HintPath>
-      </Reference>
-    </ItemGroup>
-
-    <ItemGroup>
       <None Remove="SampleShips.zip" />
-      <EmbeddedResource Include="SampleShips.zip" />
+      <None Update="nickel.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
     
     <ItemGroup>
-      <PackageReference Include="Lib.Harmony" Version="2.2.2" />
-      <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
-      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+      <PackageReference Include="Nickel.ModBuildConfig" Version="0.1.2" />
+      <PackageReference Remove="Nanoray.ExtractSingleFileApplicationResourceTask" />
+      <PackageReference Remove="MonoGame.Framework.DesktopGL" />
+      <PackageReference Remove="MonoGame.Framework.DesktopGL" />
+      <PackageReference Remove="Nanoray.ExtractSingleFileApplicationResourceTask" />
+      <PackageReference Remove="Newtonsoft.Json" />
+      <Reference Include="OneOf" Private="False" HintPath="$(ModLoaderPath)\OneOf.dll"/>
     </ItemGroup>
-
-    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-      <Exec Command="xcopy /Y &quot;$(TargetPath)&quot; &quot;D:\User\Documents\RiderProjects\Nickel\Nickel\.bin\Debug\net6.0\ModLibrary\ITRsShipLoader&quot;&#xA;" />
-    </Target>
 </Project>

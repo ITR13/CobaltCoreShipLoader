@@ -1,4 +1,5 @@
-﻿using ITRsCobaltCoreShipLoader.Data;
+﻿using System.Text;
+using ITRsCobaltCoreShipLoader.Data;
 using Microsoft.Extensions.Logging;
 using Nanoray.PluginManager;
 using Newtonsoft.Json;
@@ -15,9 +16,9 @@ public class ShipLoader(
 )
     : IPluginLoader<IModManifest, Mod>
 {
-    private readonly struct SplitEntry(string entryPath, string[] split)
+    private readonly struct SplitEntry(IFileInfo fileInfo, string[] split)
     {
-        public readonly string EntryPath = entryPath;
+        public readonly IFileInfo FileInfo = fileInfo;
         public readonly string[] Split = split;
     }
 
@@ -37,68 +38,87 @@ public class ShipLoader(
     public OneOf<Mod, Error<string>> LoadPlugin(IPluginPackage<IModManifest> package)
     {
         var logger = modLoggerGetter(package);
-        void Log(object msg) => logger.Log(LogLevel.Information, "{}", msg);
+        var log = (object msg) => logger.Log(LogLevel.Information, "{}", msg);
         var warn = (object msg) => logger.Log(LogLevel.Warning, "{}", msg);
-        void Err(object msg) => logger.Log(LogLevel.Error, "{}", msg);
+        var err = (object msg) => logger.Log(LogLevel.Error, "{}", msg);
 
         var modHelper = modHelperGetter(package);
         var modSprites = modHelper.Content.Sprites;
         var modShips = modHelper.Content.Ships;
 
-        var pngEntries = new List<(string, string)>();
-        var offPngEntries = new HashSet<string>();
-        var shipModEntries = new List<SplitEntry>();
-        var rootPath = package.PackageRoot.FullName + Path.DirectorySeparatorChar;
-        var rootUri = new Uri(rootPath);
-        foreach (var fileInfo in package.PackageRoot.Files)
+        var (pngEntries, offPngEntries, shipModEntries) = FindEntries(package, log);
+        var successfulParts = LoadSprites(pngEntries, modSprites, offPngEntries, modShips, log, err);
+        var successfulShips = LoadShips(shipModEntries, warn, modShips, log, err);
+
+        if (successfulParts == 0 && successfulShips == 0)
         {
-            var entry = rootUri.MakeRelativeUri(new Uri(fileInfo.FullName)).ToString();
-            if (entry == "nickel.json") continue;
-
-            var cleanedEntry = entry.ToLower();
-            var extension = Path.GetExtension(cleanedEntry);
-            cleanedEntry = "/" + cleanedEntry[..^extension.Length];
-
-            switch (extension)
-            {
-                case ".png" when cleanedEntry.EndsWith("_off"):
-                    offPngEntries.Add(entry);
-                    break;
-                case ".png":
-                    pngEntries.Add((entry, cleanedEntry));
-                    break;
-                case ".startership":
-                    shipModEntries.Add(
-                        new SplitEntry(
-                            entryPath: entry,
-                            split: $"{package.Manifest.UniqueName}::{cleanedEntry}".Split("/")
-                        )
-                    );
-                    break;
-                default:
-                    Log($"Skipping entry '{cleanedEntry}' with extension {extension}");
-                    break;
-            }
+            return new Error<string>($"Failed to load any sprites or ships from {package.Manifest.UniqueName}");
         }
 
-        var successfulParts = 0;
-        foreach (var (entry, cleanedEntry) in pngEntries)
+        log($"Successfully loaded {successfulParts} part and {successfulShips} ships!");
+        return new ShipMod();
+    }
+
+    private int LoadShips(
+        List<SplitEntry> shipModEntries,
+        Action<object> warn,
+        IModShips modShips,
+        Action<object> log,
+        Action<object> err
+    )
+    {
+        var successfulShips = 0;
+        foreach (var entry in shipModEntries)
         {
             try
             {
-                var cachedEntry = entry;
+                var json = ReadFile(entry.FileInfo);
+                var ship = LoadShip(warn, json, entry.Split);
+                var definition = new ShipConfiguration
+                {
+                    Ship = ship,
+                };
+                var registeredShip = modShips.RegisterShip(ship.ship.key, definition);
+
+                successfulShips++;
+                log($"Loaded ship {registeredShip.UniqueName}");
+            }
+            catch (Exception ex)
+            {
+                err($"Failed loading ship at entry {entry.FileInfo}:\n{ex}");
+            }
+        }
+
+        return successfulShips;
+    }
+
+    private int LoadSprites(
+        List<(string, IFileInfo)> pngEntries,
+        IModSprites modSprites,
+        Dictionary<string, IFileInfo> offPngEntries,
+        IModShips modShips,
+        Action<object> log,
+        Action<object> err
+    )
+    {
+        var successfulParts = 0;
+        foreach (var (cleanedEntry, fileInfo) in pngEntries)
+        {
+            try
+            {
+                var cachedEntry = fileInfo;
                 var sprite = modSprites.RegisterSprite(
                     cleanedEntry,
-                    () => new FileStream(Path.Combine(rootPath, cachedEntry), FileMode.Open)
+                    () => cachedEntry.OpenRead()
                 );
 
-                var offEntry = entry[..^4] + "_off.png";
+                var offEntry = cleanedEntry + "_off";
                 ISpriteEntry? offSprite = null;
-                if (offPngEntries.Contains(offEntry))
+                if (offPngEntries.TryGetValue(offEntry, out var offFileInfo))
                 {
                     offSprite = modSprites.RegisterSprite(
                         cleanedEntry + "_off",
-                        () => new FileStream(Path.Combine(rootPath, offEntry), FileMode.Open)
+                        () => offFileInfo.OpenRead()
                     );
                 }
 
@@ -113,43 +133,61 @@ public class ShipLoader(
                 _registeredParts.Add(part.UniqueName);
                 successfulParts++;
 
-                Log($"Loaded part {part.UniqueName}");
+                log($"Loaded part {part.UniqueName}");
             }
             catch (Exception ex)
             {
-                Err($"Failed loading sprite at entry {entry}:\n{ex}");
+                err($"Failed loading sprite at entry {fileInfo}:\n{ex}");
             }
         }
 
-        var successfulShips = 0;
-        foreach (var entry in shipModEntries)
+        return successfulParts;
+    }
+
+    private (List<(string, IFileInfo)> pngEntries, Dictionary<string, IFileInfo> offPngEntries, List<SplitEntry>
+        shipModEntries) FindEntries(IPluginPackage<IModManifest> package, Action<object> log)
+    {
+        var pngEntries = new List<(string, IFileInfo)>();
+        var offPngEntries = new Dictionary<string, IFileInfo>();
+        var shipModEntries = new List<SplitEntry>();
+        foreach (var fileInfo in package.PackageRoot.Files)
         {
-            try
-            {
-                var json = File.ReadAllText(Path.Combine(rootPath, entry.EntryPath));
-                var ship = LoadShip(warn, json, entry.Split);
-                var definition = new ShipConfiguration
-                {
-                    Ship = ship,
-                };
-                var registeredShip = modShips.RegisterShip(ship.ship.key, definition);
+            var entryPath = fileInfo.GetRelativePathTo(package.PackageRoot);
+            if (entryPath == "nickel.json") continue;
 
-                successfulShips++;
-                Log($"Loaded ship {registeredShip.UniqueName}");
-            }
-            catch (Exception ex)
+            var cleanedEntry = FixPath(entryPath.ToLower());
+            var extension = Path.GetExtension(cleanedEntry);
+            cleanedEntry = "/" + cleanedEntry[..^extension.Length];
+
+            switch (extension)
             {
-                Err($"Failed loading ship at entry {entry.EntryPath}:\n{ex}");
+                case ".png" when cleanedEntry.EndsWith("_off"):
+                    offPngEntries.Add(cleanedEntry, fileInfo);
+                    break;
+                case ".png":
+                    pngEntries.Add((cleanedEntry, fileInfo));
+                    break;
+                case ".startership":
+                    shipModEntries.Add(
+                        new SplitEntry(
+                            fileInfo: fileInfo,
+                            split: $"{package.Manifest.UniqueName}::{cleanedEntry}".Split("/")
+                        )
+                    );
+                    break;
+                default:
+                    log($"Skipping entry '{cleanedEntry}' with extension {extension}");
+                    break;
             }
         }
 
-        if (successfulParts == 0 && successfulShips == 0)
-        {
-            return new Error<string>($"Failed to load any sprites or ships from {package.Manifest.UniqueName}");
-        }
+        return (pngEntries, offPngEntries, shipModEntries);
+    }
 
-        Log($"Successfully loaded {successfulParts} part and {successfulShips} ships!");
-        return new ShipMod();
+    private string ReadFile(IFileInfo file)
+    {
+        using var streamReader = new StreamReader(file.OpenRead(), Encoding.UTF8);
+        return streamReader.ReadToEnd();
     }
 
     private SimpleStarterShip LoadShip(Action<object> warn, string json, string[] folders)
@@ -191,5 +229,10 @@ public class ShipLoader(
 
         warn($"Failed to remap sprite '{original}'");
         return original;
+    }
+
+    private string FixPath(string path)
+    {
+        return path.Replace(Path.DirectorySeparatorChar, '/');
     }
 }
