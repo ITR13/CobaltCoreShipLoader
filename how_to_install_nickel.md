@@ -6,7 +6,7 @@
     2. [About errors](#about-errors)
 
 # Installing modloader
-Download [Nickel.zip](https://github.com/Shockah/Nickel/releases/download/release%2F0.1.0/Nickel-0.1.0.zip) and extract it somewhere, *preferably* your game's directory.  
+Download [Nickel.zip](https://github.com/Shockah/Nickel/releases/download/release%2F0.2.0/Nickel-0.2.0.zip) and extract it somewhere, *preferably* your game's directory.  
 Inside the downloaded zip, you'll find the Nickel folder. Extract this folder, preferably within your game's directory.  
 ![The game's folder open with a folder named "Nickel" highlighted](https://raw.githubusercontent.com/ITR13/CobaltCoreShipLoader/main/.readme/nickel_zip.png)  
 Make sure it's *extracted* and a **folder** like in the previous image. That it doesn't end with ".zip"  
