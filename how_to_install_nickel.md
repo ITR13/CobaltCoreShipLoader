@@ -15,7 +15,9 @@ Open the Nickel folder and run "NickelLauncher.exe".
 If the game loads without any errors the modloader is working.  
 
 ## Transferring your save file from the vanilla game
-If you're on windows press windows+r and type in "%AppData%/CobaltCore" and hit run. This will open your vanilla save folder. For other platforms, please tell me so I can update the guide.  
+If you're on windows press windows+r and type in "%AppData%/CobaltCore" and hit run. This will open your vanilla save folder. 
+If you're on linux, find your SteamLibrary folder, then go to compatdata/2179850/pfx/drive_c/users/steamuser/AppData/Roaming/CobaltCore/ inside it.
+For other platforms, please tell me so I can update the guide.  
 ![Folder with Slot0, Slot1, Settings.json, and steam_autocloud.vdf in it](https://raw.githubusercontent.com/ITR13/CobaltCoreShipLoader/main/.readme/save_folder.png)  
 Open your Nickel folder from before, and find the "ModSaves" folder. If you haven't run NickelLauncher.exe yet then you need to create this folder yourself.  
 ![Folder with ModSaves marked](https://raw.githubusercontent.com/ITR13/CobaltCoreShipLoader/main/.readme/nickel_saves.png)  
