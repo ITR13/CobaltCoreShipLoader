@@ -35,7 +35,7 @@ public class ShipLoader(
         return package.Manifest.ModType == "ShipMod" ? new Yes() : new No();
     }
 
-    public OneOf<Mod, Error<string>> LoadPlugin(IPluginPackage<IModManifest> package)
+    public PluginLoadResult<Mod> LoadPlugin(IPluginPackage<IModManifest> package)
     {
         var logger = modLoggerGetter(package);
         var log = (object msg) => logger.Log(LogLevel.Information, "{}", msg);
@@ -56,7 +56,11 @@ public class ShipLoader(
         }
 
         log($"Successfully loaded {successfulParts} part and {successfulShips} ships!");
-        return new ShipMod();
+        return new PluginLoadResult<Mod>.Success
+        {
+            Warnings = Array.Empty<string>(),
+            Plugin = new ShipMod(),
+        };
     }
 
     private int LoadShips(
