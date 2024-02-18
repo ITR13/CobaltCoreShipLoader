@@ -1,6 +1,6 @@
 {
   "UniqueName": "ITR.ShipLoader",
-  "Version": "1.0.1",
+  "Version": "2.0.1",
   "RequiredApiVersion": "0.7.0",
   "ModType": "Nickel.Assembly",
   "EntryPointAssembly": "ITRsShipLoader.dll",
